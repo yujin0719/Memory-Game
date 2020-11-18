@@ -1,5 +1,6 @@
 let CARD_ARRAY = ['fa-anchor', 'fa-anchor', 'fa-bicycle', 'fa-bolt', 'fa-cube', 'fa-gem', 'fa-gem', 'fa-plane', 'fa-leaf', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-plane', 'fa-cube','fa-heart','fa-heart','fa-star-of-david','fa-star-of-david'];
 const INIT_TIME = 0;
+const board = document.querySelector('.board');
 const startBtn = document.querySelector('.start');
 const stopBtn = document.querySelector('.stop');
 const gameTimer = document.querySelector('.time');
@@ -26,6 +27,7 @@ stopBtn.addEventListener('click',()=>{
 popUpBtn.addEventListener('click',()=>{
     startGameTimer();
     hidePopUp();
+    init();
     initValue();
     restartClick();
     showBtn();
@@ -49,6 +51,14 @@ function finishGame(){
     stopGameTimer();
     showPopUpWithText('Congraturations🎉🎉🎉');
     hideBtn();
+}
+function init(){
+    let els = board.getElementsByClassName('match');
+    Array.from(els).forEach(el => {
+        el.classList.remove('match');
+        el.classList.remove('show');
+        el.classList.remove('open');
+    });
 }
 function initValue(){
     machedCard = 0;
