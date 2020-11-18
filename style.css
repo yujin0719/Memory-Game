@@ -1,0 +1,204 @@
+:root {
+    --color-navy: #0B1659;
+    --color-gray: #68748C;
+    --color-white: #F2F2F2;
+
+    --size-small: 15px;
+    --size-medium: 20px;
+    --size-large: 36px;
+
+    --gap-small: 15px;
+    --gap-medium: 20px;
+    --gap-large: 30px;
+
+    --radius: 10px;
+}
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+body {
+	width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    background: url(img/background.png) center/cover;
+}
+li{
+    list-style: none;
+}
+.header{
+    font-size: var(--size-large);
+    margin: var(--gap-medium);
+    color: var(--color-white);
+}
+.game {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.set{
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: var(--gap-small);
+    background-color: rgba(122,149,197,0.3);
+    border-radius: var(--radius);
+}
+.set__time, .set__tries, .set__score{
+    font-size: var(--size-medium);
+    color: var(--color-gray);
+}
+.time, .tries, .score{
+    font-size: var(--size-small);
+    color: var(--color-white);
+}
+.start, .stop{
+    background-color: rgba(122,149,197,0.5);
+    color: var(--color-white);
+    font-size: var(--size-small);
+    width: 70px;
+    height: 40px;
+    border-radius: var(--radius);
+    margin-top: 12px;
+}
+.start:hover, .stop:hover{
+    background-color: rgba(122,149,197,0.3);
+}
+.board {
+    margin: 0 auto;
+	background: rgb(22,36,64);
+background: linear-gradient(137deg, rgba(22,36,64,0.9) 64%, rgba(121,126,140,1) 88%);
+	border-radius: 1.5em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	height: 35em;
+	margin-bottom: 6em;
+	padding: 0.8em;
+    width: 35em;
+}
+.board,
+.card {
+	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+.card {
+    background: rgb(255,254,87);
+    background: linear-gradient(77deg, rgba(255,254,87,0.7) 27%, rgba(245,189,66,0.8) 67%);
+	border-radius: 0.5em;
+	height: 6.5em;
+    width: 6.5em;
+    line-height: 6.5em;
+    cursor: pointer;
+}
+.card:hover {
+    background-color: wheat;
+}
+.card i {
+    /* font-size: var(--size-large); */
+    font-size: 0;
+    color: white;
+}
+.card.open {
+    transform: rotateY(0);
+    background: #86a9e3; 
+    cursor: default;
+    animation-name: flipInY;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    animation-duration: .75s;
+}
+.card.open i{
+    font-size: var(--size-large);
+}
+.popup{
+    position: absolute;
+    top: 60%;
+    left: 37%;
+    width: 400px;
+    height: 150px;
+    border-radius: var(--radius);
+    background-color: rgba(235,235,235,0.4);
+}
+.popup__hide {
+    visibility: hidden;
+}
+.popup__btn {
+    margin-top: var(--gap-small);
+    width: 50px;
+    height: 50px;
+}
+.popup__btn:hover {
+    border-radius: 50%;
+    background-color: var(--color-gray);
+}
+.popup__btn i {
+    font-size: 30px;
+}
+.popup__message{
+    font-size: var(--gap-large);
+    font-weight: bold;
+}
+
+
+/* animations */
+@keyframes flipInY {
+    from {
+        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+
+    40% {
+        transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        animation-timing-function: ease-in;
+    }
+
+    60% {
+        transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        opacity: 1;
+    }
+
+    80% {
+        transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+    }
+
+    to {
+        transform: perspective(400px);
+    }
+}
+
+@keyframes rubberBand {
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        transform: scale3d(.95, 1.05, 1);
+    }
+
+    75% {
+        transform: scale3d(1.05, .95, 1);
+    }
+
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
